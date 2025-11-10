@@ -9,13 +9,19 @@ import AddCoffee from "./component/AddCoffee.jsx";
 import UpdateCoffee from "./component/UpdateCoffee.jsx";
 import Home from "./pages/Home.jsx";
 import Login from "./CreateUsers/Login.jsx";
-import Register from "./CreateUsers/Register.jsx"
+import Register from "./CreateUsers/Register.jsx";
+import HomePage from "./component/HomePage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: <Home />,
     children: [
+      {
+        path: "/",
+        element: <HomePage />,
+        loader: ()=> fetch("http://localhost:5000/coffee"),
+      },
       {
         path: "addcoffee",
         element: <AddCoffee></AddCoffee>,
@@ -25,13 +31,13 @@ const router = createBrowserRouter([
         element: <UpdateCoffee />,
       },
       {
-        path:'login',
-        element:<Login/>
+        path: "login",
+        element: <Login />,
       },
       {
-        path:'register',
-        element:<Register/>
-      }
+        path: "register",
+        element: <Register />,
+      },
     ],
   },
 ]);

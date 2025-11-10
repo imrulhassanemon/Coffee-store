@@ -1,11 +1,24 @@
 // Login.jsx
 import React from "react";
 import AuthForm from "./AuthForm";
+import {Link} from "react-router-dom";
 
 const Login = () => {
   const fields = [
-    { name: "email", label: "Email", type: "email", placeholder: "Enter email", required: true },
-    { name: "password", label: "Password", type: "password", placeholder: "Enter password", required: true },
+    {
+      name: "email",
+      label: "Email",
+      type: "email",
+      placeholder: "Enter email",
+      required: true,
+    },
+    {
+      name: "password",
+      label: "Password",
+      type: "password",
+      placeholder: "Enter password",
+      required: true,
+    },
   ];
 
   const handleLogin = (data) => {
@@ -19,6 +32,16 @@ const Login = () => {
       fields={fields}
       onSubmit={handleLogin}
       submitText="Login"
+      alreadyaccount={
+        <>
+          Don't have an account?{" "}
+          {
+            <Link className="text-[#0088FF]" to={"/register"}>
+              Register
+            </Link>
+          }
+        </>
+      }
     />
   );
 };

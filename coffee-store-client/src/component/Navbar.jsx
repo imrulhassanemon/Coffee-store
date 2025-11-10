@@ -56,11 +56,15 @@ const Navbar = () => {
         </div>
       ) : (
         <div className="navbar-end gap-5">
-          <Link>
-            <button className="btn border-[#0088FF] text-[#0088FF] hover:bg-[#0088FF] hover:text-white">Register</button>
+          <Link to={"/register"}>
+            <button className="btn border-[#0088FF] text-[#0088FF] hover:bg-[#0088FF] hover:text-white">
+              Register
+            </button>
           </Link>
-          <Link>
-            <button className="btn border text-[#0088FF]  hover:bg-[#0088FF] border-[#0088FF] hover:text-white">Login</button>
+          <Link to={"/login"}>
+            <button className="btn border text-[#0088FF]  hover:bg-[#0088FF] border-[#0088FF] hover:text-white">
+              Login
+            </button>
           </Link>
         </div>
       )}
