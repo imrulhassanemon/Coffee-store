@@ -4,6 +4,9 @@ import AuthForm from "./AuthForm";
 import {Link} from "react-router-dom";
 
 const Login = () => {
+
+
+
   const fields = [
     {
       name: "email",
@@ -36,7 +39,7 @@ const Login = () => {
         <>
           Don't have an account?{" "}
           {
-            <Link className="text-[#0088FF]" to={"/register"}>
+            <Link  className="text-[#0088FF]" to={"/register"}>
               Register
             </Link>
           }

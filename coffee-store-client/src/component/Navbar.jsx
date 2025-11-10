@@ -5,17 +5,11 @@ import {Link} from "react-router-dom";
 const Navbar = () => {
   const [user, setUser] = useState(null);
 
-  const nav = [
-    <li>
-      <Link>Home</Link>
-    </li>,
-    <li>
-      <Link>All Product</Link>
-    </li>,
-    <li>
-      <Link>My product</Link>
-    </li>,
-  ];
+const navLinks = [
+  { name: "Home", to: "/" },
+  { name: "All Product", to: "/all-products" },
+  { name: "My Product", to: "/my-product" },
+];
 
   return (
     <div className="navbar bg-base-100 shadow-sm">
@@ -40,13 +34,25 @@ const Navbar = () => {
           <ul
             tabIndex="-1"
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-            {nav}
+            <ul className="menu menu-horizontal px-1">
+  {navLinks.map((link, i) => (
+    <li key={i}>
+      <Link to={link.to}>{link.name}</Link>
+    </li>
+  ))}
+</ul>
           </ul>
         </div>
         <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{nav}</ul>
+        <ul className="menu menu-horizontal px-1"><ul className="menu menu-horizontal px-1">
+  {navLinks.map((link, i) => (
+    <li key={i}>
+      <Link to={link.to}>{link.name}</Link>
+    </li>
+  ))}
+</ul></ul>
       </div>
       {user ? (
         <div className="avatar navbar-end avatar-placeholder">

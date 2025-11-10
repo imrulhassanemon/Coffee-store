@@ -1,25 +1,24 @@
 import React from "react";
 
 const Card = ({coffee}) => {
-
   const {
-      name: name,
-      chef: chef,
-      supplier: supplier,
-      taste: taste,
-      category: category,
-      details: details,
-      photo: photo,
-    } = coffee
-
+    name: name,
+    chef: chef,
+    supplier: supplier,
+    taste: taste,
+    category: category,
+    details: details,
+    photo: photo,
+  } = coffee;
 
   return (
     <div className="card bg-base-100 w-96 grid justify-center items-center shadow-sm">
       <figure>
-        <img
-          src={photo}
-          alt="Shoes"
-        />
+        {photo ? (
+          <img src={photo} alt="Shoes" />
+        ) : (
+          <p>No photo available</p> // optional placeholder
+        )}
       </figure>
       <div className="card-body">
         <h2 className="card-title">
