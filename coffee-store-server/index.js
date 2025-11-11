@@ -55,7 +55,23 @@ async function run() {
       console.log(users);
       const result = await userCollection.insertOne(users);
       console.log(result);
+      res.send(result)
+    })
+
+
+    // insert userdata form google sign up .!
+    // app.post('/googleauth'), async (req, res) => {
+    //   const user = req.body;
+    //   const result = await userCollection.insertOne(user)
+    //   console.log(result);
       
+    //   res.send(result);
+    // }
+     app.post('/googleauth', async(req, res) => {
+      const user = req.body;
+      console.log(user);
+      const result = await userCollection.insertOne(user);
+      console.log(result);
       res.send(result)
     })
 

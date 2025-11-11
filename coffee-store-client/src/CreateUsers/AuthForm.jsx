@@ -3,6 +3,7 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import React from "react";
 import {FcGoogle} from "react-icons/fc";
 import auth from "../firebase/firebase";
+const provider = new GoogleAuthProvider();
 
 
 const AuthForm = ({title, fields, onSubmit, submitText, alreadyaccount}) => {
@@ -14,13 +15,33 @@ const AuthForm = ({title, fields, onSubmit, submitText, alreadyaccount}) => {
     console.log(data);
   };
 
-  const googleLogin = () => {
-    console.log("first");
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-    .then(res => res.json())
-    .then(data => console.log(data))
+  const googleLogin = async() => {
+try {
+  const result = await signInWithPopup(auth, provider);
+  const user = result.user;
+  console.log(result);
+
+  const usersData = {
+    name: user.displayName,
+    email: user.email,
+    photo: user.photoURL,
   };
+
+  console.log(usersData);
+
+  const res = await fetch("http://localhost:5000/googleauth", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(usersData),
+  });
+
+  const data = await res.json();
+  console.log("Response from server:", data);
+  
+} catch (error) {
+  console.error("Google Sign-in error:", error);
+}
+  }    
 
   return (
     <>
