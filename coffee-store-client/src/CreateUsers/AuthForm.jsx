@@ -3,10 +3,18 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import React from "react";
 import {FcGoogle} from "react-icons/fc";
 import auth from "../firebase/firebase";
+import { useNavigate } from "react-router-dom";
 const provider = new GoogleAuthProvider();
 
 
 const AuthForm = ({title, fields, onSubmit, submitText, alreadyaccount}) => {
+
+
+  const navigate = useNavigate()
+
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -37,6 +45,7 @@ try {
 
   const data = await res.json();
   console.log("Response from server:", data);
+  navigate('/')
   
 } catch (error) {
   console.error("Google Sign-in error:", error);
